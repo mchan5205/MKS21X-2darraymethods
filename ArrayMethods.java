@@ -29,14 +29,21 @@ public class ArrayMethods{
     return newary;
   }
   public static int[] allColSums(int[][] ary){
-    int[] newary = new int[ary.length];
+    int largestrow = 0;
     for (int i = 0; i < ary.length; i += 1){
+      if (ary[i].length > largestrow){
+        largestrow = ary[i].length;
+      }
+    }
+    int[] newary = new int[largestrow];
+    for (int i = 0; i < largestrow; i += 1){
       newary[i] = columnSum(ary, i);
     }
     return newary;
   }
   public static boolean isRowMagic(int[][] ary){
     int first = rowSum(ary, 0);
+
     for (int i = 1; i < ary.length; i += 1){
       if (! (first == rowSum(ary, i))){
         return false;
